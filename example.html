@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Time To Readable</title>
+<style>
+body {
+	background: #000;
+	color: #fff;
+	font-family: arial;
+	line-height: 140%;
+}
+.chat-body {
+	width: 90%;
+	max-width: 560px;
+	margin: 0 auto;
+}
+.chat {
+	clear: both;
+	float: left;
+	max-width: 90%;
+}
+.chat-self {
+	float: right;
+}
+.chat + .chat {
+	margin-top: 20px;
+}
+.chat-meta {
+	font-size: 75%;
+	padding: 0 10px;
+}
+.chat-self .chat-meta {
+	text-align: right;
+}
+.chat-content {
+	background: #222;
+	padding: 2px 20px;
+	border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="chat-body">
+	<div class="chat chat-self">
+		<div class="chat-meta"><span data-ago="1639729501000">2021/12/17 15:25</span></div>
+		<div class="chat-content"><p>Alright, I'll send the materials after this.</p></div>
+	</div>
+	<div class="chat chat-other">
+		<div class="chat-meta"><span data-ago="1639729735000">2021/12/17 15:28</span></div>
+		<div class="chat-content"><p>Ok, thanks a lot.</p></div>
+	</div>
+	<div class="chat chat-other">
+		<div class="chat-meta"><span data-ago="1639751901000">2021/12/17 21:38</span></div>
+		<div class="chat-content"><p>OI!</p></div>
+	</div>
+	<div class="chat chat-other">
+		<div class="chat-meta"><span data-ago="1639751912000">2021/12/17 21:38</span></div>
+		<div class="chat-content"><p>WHY THE HECK DID YOU SEND ME YOUR HOMEWORK FOLDER?!?!?</p><p>THE WHOLE CLASSROOM IS NOW LOOKING AT ME LIKE A PIECE OF GARBAGE BECAUSE OF YOU!!!!</p></div>
+	</div>
+	<div class="chat chat-self">
+		<div class="chat-meta"><span data-ago="1639751986000">2021/12/17 21:39</span></div>
+		<div class="chat-content"><p>What are you talking about? You make it sounds as if you usually gets different reaction in class.</p></div>
+	</div>
+	<div class="chat chat-self">
+		<div class="chat-meta"><span data-ago="1639752948000">2021/12/17 21:55</span></div>
+		<div class="chat-content"><p>...</p></div>
+	</div>
+	<div class="chat chat-self">
+		<div class="chat-meta"><span data-ago="1639753001000">2021/12/17 21:56</span></div>
+		<div class="chat-content"><p>In case you haven't realized, the time format right above this text is modified by Javascript.</p></div>
+	</div>
+</div>
+
+<script>
+/** Convert content of element with "data-ago" attribute (value = UNIX milliseconds), into readable format. */
+function timeDifference(target,current=new Date()){var msPerMinute=60*1000;var msPerHour=msPerMinute*60;var msPerDay=msPerHour*24;var msPerMonth=msPerDay*30;var msPerYear=msPerDay*365;var elapsed=target-current;if(elapsed>0){if(elapsed<msPerMinute){var nume=Math.round(elapsed/1000);var unit='second'}else if(elapsed<msPerHour){var nume=Math.round(elapsed/msPerMinute);var unit='minute'}else if(elapsed<msPerDay){var nume=Math.round(elapsed/msPerHour);var unit='hour'}else if(elapsed<msPerMonth){var nume=Math.round(elapsed/msPerDay);var unit='day'}else if(elapsed<msPerYear){var nume=Math.round(elapsed/msPerMonth);var unit='month'}else{var nume=Math.round(elapsed/msPerYear);var unit='year'}}else{if(elapsed>(-1*msPerMinute)){var nume=Math.round(elapsed/1000);var unit='second'}else if(elapsed>(-1*msPerHour)){var nume=Math.round(elapsed/msPerMinute);var unit='minute'}else if(elapsed>(-1*msPerDay)){var nume=Math.round(elapsed/msPerHour);var unit='hour'}else if(elapsed>(-1*msPerMonth)){var nume=Math.round(elapsed/msPerDay);var unit='day'}else if(elapsed>(-1*msPerYear)){var nume=Math.round(elapsed/msPerMonth);var unit='month'}else{var nume=Math.round(elapsed/msPerYear);var unit='year'}}const rtf=new Intl.RelativeTimeFormat();return rtf.format(nume,unit)}var elements=document.querySelectorAll('[data-ago]');elements.forEach(function(element,index){var timeAgo=timeDifference(element.getAttribute('data-ago'));element.innerHTML=timeAgo;});
+</script>
+
+</body>
+</html>
